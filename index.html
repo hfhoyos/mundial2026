@@ -612,6 +612,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
           <button class="sidebar-nav-item" id="snav-reglas" onclick="goTo('s-reglas')">
             <span class="snav-icon">📋</span> Reglas
           </button>
+          <button class="sidebar-nav-item" id="snav-estadios" onclick="goTo('s-estadios')">
+            <span class="snav-icon">🏟️</span> Estadios
+          </button>
           <button class="sidebar-nav-item" id="snav-admin" onclick="goTo('s-admin')">
             <span class="snav-icon">📊</span> Resumen
           </button>
@@ -1304,6 +1307,25 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         </div>
 
         <!-- RESUMEN -->
+        <div class="screen" id="s-estadios">
+          <div style="padding:16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+              <div>
+                <div style="font-size:20px;font-weight:700;color:#000;">Estadios</div>
+                <div style="font-size:13px;color:#8e8e93;">FIFA World Cup 2026</div>
+              </div>
+              <button id="btn-consultar-estadios" onclick="consultarEstadios()" style="background:#007aff;color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;">
+                Consultar estadios
+              </button>
+            </div>
+            <div id="estadios-estado" style="display:none;text-align:center;padding:32px;color:#8e8e93;font-size:14px;">
+              Cargando estadios...
+            </div>
+            <div id="estadios-error" style="display:none;background:#fff2f2;border:0.5px solid #ffcdd2;border-radius:12px;padding:14px;color:#c62828;font-size:13px;margin-bottom:12px;"></div>
+            <div id="estadios-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"></div>
+          </div>
+        </div>
+
         <div class="screen" id="s-admin">
           <div class="admin-header"><div class="admin-title">Resumen del torneo</div><div class="admin-sub">La Polla Mundialista 2026 · En vivo</div></div>
           <div class="admin-stats">
@@ -1364,6 +1386,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         <button class="tab-item" id="tab-especiales"><div class="tab-icon">⭐</div><div class="tab-label">Especiales</div></button>
         <button class="tab-item" id="tab-tabla"><div class="tab-icon">🏆</div><div class="tab-label">Tabla</div></button>
         <button class="tab-item" id="tab-reglas"><div class="tab-icon">📋</div><div class="tab-label">Reglas</div></button>
+        <button class="tab-item" id="tab-estadios" onclick="goTo('s-estadios')"><div class="tab-icon">🏟️</div><div class="tab-label">Estadios</div></button>
       </div>
 
         </div><!-- /main-content -->
@@ -1412,15 +1435,16 @@ var reglasSections = [
         + '<th style="' + thStyle + '">8vos</th>'
         + '<th style="' + thStyle + '">4tos</th>'
         + '<th style="' + thStyle + '">Semis</th>'
+        + '<th style="' + thStyle + '">3ro y 4to</th>'
         + '<th style="' + thStyle + '">Final</th>'
         + '</tr></thead>'
         + '<tbody>'
-        + '<tr><td style="' + tdL + '">Ganador/empate</td><td style="' + td + '">6</td><td style="' + td + '">12</td><td style="' + td + '">18</td><td style="' + td + '">24</td><td style="' + td + '">30</td><td style="' + td + '">60</td></tr>'
-        + '<tr><td style="' + tdL + '">Dif. de goles</td><td style="' + td + '">6</td><td style="' + td + '">12</td><td style="' + td + '">18</td><td style="' + td + '">24</td><td style="' + td + '">30</td><td style="' + td + '">60</td></tr>'
-        + '<tr><td style="' + tdL + '">Goles equipo 1</td><td style="' + td + '">4</td><td style="' + td + '">8</td><td style="' + td + '">12</td><td style="' + td + '">16</td><td style="' + td + '">20</td><td style="' + td + '">40</td></tr>'
-        + '<tr><td style="' + tdL + '">Goles equipo 2</td><td style="' + td + '">4</td><td style="' + td + '">8</td><td style="' + td + '">12</td><td style="' + td + '">16</td><td style="' + td + '">20</td><td style="' + td + '">40</td></tr>'
-        + '<tr><td style="' + tdL + '">Marcador inverso</td><td style="' + td + '">4</td><td style="' + td + '">8</td><td style="' + td + '">12</td><td style="' + td + '">16</td><td style="' + td + '">20</td><td style="' + td + '">40</td></tr>'
-        + '<tr><td style="' + tdL + '">✅ Marcador exacto</td><td style="' + tdH + '">20</td><td style="' + tdH + '">40</td><td style="' + tdH + '">60</td><td style="' + tdH + '">80</td><td style="' + tdH + '">100</td><td style="' + tdH + '">200</td></tr>'
+        + '<tr><td style="' + tdL + '">Ganador/empate</td><td style="' + td + '">6</td><td style="' + td + '">12</td><td style="' + td + '">18</td><td style="' + td + '">24</td><td style="' + td + '">30</td><td style="' + td + '">30</td><td style="' + td + '">60</td></tr>'
+        + '<tr><td style="' + tdL + '">Dif. de goles</td><td style="' + td + '">6</td><td style="' + td + '">12</td><td style="' + td + '">18</td><td style="' + td + '">24</td><td style="' + td + '">30</td><td style="' + td + '">30</td><td style="' + td + '">60</td></tr>'
+        + '<tr><td style="' + tdL + '">Goles equipo 1</td><td style="' + td + '">4</td><td style="' + td + '">8</td><td style="' + td + '">12</td><td style="' + td + '">16</td><td style="' + td + '">20</td><td style="' + td + '">20</td><td style="' + td + '">40</td></tr>'
+        + '<tr><td style="' + tdL + '">Goles equipo 2</td><td style="' + td + '">4</td><td style="' + td + '">8</td><td style="' + td + '">12</td><td style="' + td + '">16</td><td style="' + td + '">20</td><td style="' + td + '">20</td><td style="' + td + '">40</td></tr>'
+        + '<tr><td style="' + tdL + '">Marcador inverso</td><td style="' + td + '">4</td><td style="' + td + '">8</td><td style="' + td + '">12</td><td style="' + td + '">16</td><td style="' + td + '">20</td><td style="' + td + '">20</td><td style="' + td + '">40</td></tr>'
+        + '<tr><td style="' + tdL + '">✅ Marcador exacto</td><td style="' + tdH + '">20</td><td style="' + tdH + '">40</td><td style="' + tdH + '">60</td><td style="' + tdH + '">80</td><td style="' + tdH + '">100</td><td style="' + tdH + '">100</td><td style="' + tdH + '">200</td></tr>'
         + '</tbody></table>'
         + '<div style="font-size:10px;color:#8e8e93;margin:6px 0 2px;">✅ Marcador exacto activa los 4 microjuegos anteriores automáticamente</div>'
         + '</div>';
@@ -1459,9 +1483,10 @@ var reglasSections = [
         + '<th style="' + thStyle + '">8vos</th>'
         + '<th style="' + thStyle + '">4tos</th>'
         + '<th style="' + thStyle + '">Semis</th>'
+        + '<th style="' + thStyle + '">3ro y 4to</th>'
         + '<th style="' + thStyle + '">Final</th>'
         + '</tr></thead><tbody>'
-        + '<tr><td style="' + tdL + '">⏰ ¿Quién avanza?</td><td style="' + tdH + '">12</td><td style="' + tdH + '">18</td><td style="' + tdH + '">24</td><td style="' + tdH + '">30</td><td style="' + tdH + '">60</td></tr>'
+        + '<tr><td style="' + tdL + '">⏰ ¿Quién avanza?</td><td style="' + tdH + '">12</td><td style="' + tdH + '">18</td><td style="' + tdH + '">24</td><td style="' + tdH + '">30</td><td style="' + tdH + '">30</td><td style="' + tdH + '">60</td></tr>'
         + '<tr><td style="' + tdL + '">Demás microjuegos</td><td style="' + tdG + '">no aplica</td><td style="' + tdG + '">no aplica</td><td style="' + tdG + '">no aplica</td><td style="' + tdG + '">no aplica</td><td style="' + tdG + '">no aplica</td></tr>'
         + '</tbody></table></div>'
         + '<div class="acc-row" style="background:#fff2f2;"><div><div class="acc-row-label">🔴 Penales: no genera puntos adicionales</div><div class="acc-row-sub">Si hay penales, el ganador del alargue ya acumuló los puntos</div></div></div>'
@@ -1567,7 +1592,7 @@ var colScore = 1, porScore = 1;
 // ── NAVEGACIÓN ────────────────────────────────────────────────────────────
 var tabMap = {
   's-home':'tab-home','s-partidos':'tab-reglas','s-partido':'tab-reglas','s-reglas':'tab-reglas',
-  's-tabla':'tab-tabla','s-especiales':'tab-especiales'
+  's-tabla':'tab-tabla','s-especiales':'tab-especiales','s-estadios':'tab-estadios'
 };
 
 function goTo(screenId) {
@@ -1581,6 +1606,63 @@ function goTo(screenId) {
   if (screenId === 's-especiales') initEspeciales();
   if (screenId === 's-reglas') initReglas();
   if (screenId === 's-partidos') renderPartidosContent();
+}
+
+// ── ESTADIOS ──────────────────────────────────────────────────────────────
+var estadiosCargados = false;
+
+function consultarEstadios() {
+  if (estadiosCargados) return;
+
+  var btn = document.getElementById('btn-consultar-estadios');
+  var estado = document.getElementById('estadios-estado');
+  var error = document.getElementById('estadios-error');
+  var grid = document.getElementById('estadios-grid');
+
+  btn.disabled = true;
+  btn.textContent = 'Consultando...';
+  estado.style.display = 'block';
+  error.style.display = 'none';
+  grid.innerHTML = '';
+
+  var API_URL = 'https://sion.cloud.a01.hysintegrar.com/fifa2026/vERP_2_dat_dat/v1/fifa_etd?api_key=SuzvTp4qwXQtAVFJbdzP';
+
+  fetch(API_URL)
+    .then(function(res) {
+      if (!res.ok) throw new Error('Error HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function(data) {
+      estado.style.display = 'none';
+      btn.textContent = data.count + ' estadios cargados ✓';
+      btn.style.background = '#34c759';
+
+      var estadios = data.fifa_etd.filter(function(e){ return !e.off; });
+      var flagPais = { 'Canadá':'🇨🇦', 'México':'🇲🇽', 'EE.UU.':'🇺🇸' };
+
+      estadios.forEach(function(e) {
+        var utcStr = e.utc_ref >= 0 ? 'UTC+' + e.utc_ref : 'UTC' + e.utc_ref;
+        var flag = flagPais[e.pai] || '🏟️';
+        var card = document.createElement('div');
+        card.style.cssText = 'background:#fff;border-radius:14px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.07);cursor:pointer;';
+        card.innerHTML =
+          '<div style="font-size:22px;margin-bottom:6px;">' + flag + '</div>' +
+          '<div style="font-size:13px;font-weight:700;color:#000;line-height:1.3;margin-bottom:4px;">' + e.name + '</div>' +
+          '<div style="font-size:11px;color:#8e8e93;margin-bottom:6px;">' + e.pai + ' · ' + utcStr + '</div>' +
+          '<a href="' + e.gps + '" target="_blank" style="font-size:11px;color:#007aff;text-decoration:none;font-weight:600;">Ver en mapa →</a>';
+        grid.appendChild(card);
+      });
+
+      estadiosCargados = true;
+    })
+    .catch(function(err) {
+      estado.style.display = 'none';
+      error.style.display = 'block';
+      error.textContent = 'No se pudo conectar con Velneo: ' + err.message;
+      btn.disabled = false;
+      btn.textContent = 'Reintentar';
+      btn.style.background = '#ff3b30';
+    });
 }
 
 // ── CLOCK ─────────────────────────────────────────────────────────────────
@@ -3688,7 +3770,7 @@ function renderGrupoFasePanel(k) {
 var tabMap = {
   's-home':'tab-home','s-partidos':'tab-reglas','s-partido':'tab-home',
   's-tabla':'tab-tabla','s-especiales':'tab-especiales',
-  's-reglas':'tab-reglas','s-confirm':'tab-home'
+  's-reglas':'tab-reglas','s-confirm':'tab-home','s-estadios':'tab-estadios'
 };
 
 // ── TOP BAR TITLES ────────────────────────────────────────────────────────
@@ -3696,6 +3778,7 @@ var topBarTitles = {
   's-home':       { title: 'Mis Partidos',        sub: 'Gestiona tus pronósticos' },
   's-especiales': { title: 'Categorías Especiales', sub: 'Pronósticos del torneo' },
   's-tabla':      { title: 'Tabla de Posiciones',  sub: 'Ranking de jugadores' },
+  's-estadios':   { title: 'Estadios',               sub: 'FIFA World Cup 2026' },
   's-reglas':     { title: 'Reglas',               sub: 'Cómo funciona la polla' },
   's-admin':      { title: 'Resumen',              sub: 'La Polla Mundialista 2026' },
   's-partido':    { title: 'Detalle del Partido',  sub: 'Pronóstico por partido' },
