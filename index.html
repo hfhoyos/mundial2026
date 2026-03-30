@@ -803,45 +803,38 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
             <!-- ACCORDION BUTTONS -->
             <div id="reglas-accordion"></div>
 
-            <!-- ╔══════════════════════════════════════════════════
-                 ║ TAÍNO — Asistente de reglas (Hola Mundo AI)
-                 ╚══════════════════════════════════════════════════ -->
+            <!-- ╔══════════════════════════════════════════
+                 ║ TAÍNO — Asistente AI de reglas y Mundial
+                 ╚══════════════════════════════════════════ -->
             <div id="taino-section" style="margin-top:24px;border-top:0.5px solid rgba(0,0,0,0.08);padding-top:20px;">
-
-              <!-- Avatar + burbuja -->
               <div style="display:flex;align-items:flex-end;gap:12px;margin-bottom:16px;">
                 <div id="taino-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2ecc71,#27ae60);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;box-shadow:0 2px 8px rgba(46,204,113,0.4);transition:transform .2s;">
-                  🦜
+                  &#x1F426;
                 </div>
                 <div style="flex:1;">
-                  <div style="font-size:11px;font-weight:700;color:#27ae60;margin-bottom:4px;">TAÍNO · Mascota Oficial</div>
+                  <div style="font-size:11px;font-weight:700;color:#27ae60;margin-bottom:4px;">TAINO - Mascota Oficial</div>
                   <div id="taino-bubble" style="background:#f0faf4;border:1px solid #d5f0e0;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;color:#1a1a1a;line-height:1.5;">
-                    ¡Hola! Soy Taíno 🌿 Pregúntame sobre las reglas de la polla o sobre el Mundial 2026. ¡Estoy aquí para ayudarte!
+                    Hola! Soy Taino. Preguntame sobre las reglas de la polla o el Mundial 2026.
                   </div>
                 </div>
               </div>
-
-              <!-- Sugerencias rápidas -->
               <div id="taino-chips" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-                <button onclick="tainoPreguntar('¿Cómo funciona la ventana de apuesta?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">⏱️ Ventana</button>
-                <button onclick="tainoPreguntar('¿Cuántos puntos gano si acierto el marcador exacto?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">🎯 Puntos</button>
-                <button onclick="tainoPreguntar('¿Qué son los microjuegos?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">🎮 Microjuegos</button>
-                <button onclick="tainoPreguntar('¿Cuántos equipos hay en el Mundial 2026?')" style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:20px;padding:6px 12px;font-size:12px;color:#4f46e5;cursor:pointer;font-weight:600;">🌍 Mundial</button>
+                <button onclick="tainoPreguntar('Como funciona la ventana de apuesta?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">Ventana</button>
+                <button onclick="tainoPreguntar('Cuantos puntos gano si acierto el marcador exacto?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">Puntos</button>
+                <button onclick="tainoPreguntar('Que son los microjuegos?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">Microjuegos</button>
+                <button onclick="tainoPreguntar('Cuantos equipos hay en el Mundial 2026?')" style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:20px;padding:6px 12px;font-size:12px;color:#4f46e5;cursor:pointer;font-weight:600;">Mundial</button>
               </div>
-
-              <!-- Input -->
               <div style="display:flex;gap:8px;align-items:center;">
-                <input id="taino-input" type="text" placeholder="Pregúntale a Taíno..."
+                <input id="taino-input" type="text" placeholder="Preguntale a Taino..."
                   style="flex:1;background:#f5f5f7;border:none;border-radius:12px;padding:11px 14px;font-size:14px;color:#1a1a1a;outline:none;"
-                  onkeydown="if(event.key==='Enter' && !event.shiftKey){ tainoEnviar(); }"
+                  onkeydown="if(event.key==='Enter'){ tainoEnviar(); }"
                   maxlength="200">
                 <button id="taino-btn" onclick="tainoEnviar()"
-                  style="background:#27ae60;color:#fff;border:none;border-radius:12px;width:44px;height:44px;font-size:20px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s;">
-                  ➤
+                  style="background:#27ae60;color:#fff;border:none;border-radius:12px;width:44px;height:44px;font-size:20px;cursor:pointer;flex-shrink:0;">
+                  &gt;
                 </button>
               </div>
-              <div style="font-size:10px;color:#c7c7cc;margin-top:6px;text-align:center;">Powered by Claude · Solo responde sobre reglas y el Mundial 2026</div>
-
+              <div style="font-size:10px;color:#c7c7cc;margin-top:6px;text-align:center;">Powered by Claude - Solo responde sobre reglas y el Mundial 2026</div>
             </div>
 
           </div>
@@ -1452,10 +1445,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ══════════════════════════════════════════════════════════════
-// TAÍNO API KEY — reemplaza con tu key real de Anthropic
-// Obtén tu key en: https://console.anthropic.com/
-// ══════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
+// TAÍNO API KEY
+// ══════════════════════════════════════════════════════
 window.TAINO_API_KEY = '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';
 
 
@@ -4092,154 +4084,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // ╔══════════════════════════════════════════════════════
 // ║ TORRE PARTIDOS — Generador PDF
 // ╚══════════════════════════════════════════════════════
-
-// ╔══════════════════════════════════════════════════════════════════════
-// ║ TAÍNO — Asistente AI de reglas y Mundial 2026
-// ║ Modelo: claude-haiku-4-5-20251001 (rápido y económico)
-// ║ Contexto: reglas de la polla + conocimiento general del Mundial
-// ║ Scope: solo reglas y Mundial — sin datos de pronósticos aún
-// ╚══════════════════════════════════════════════════════════════════════
-
-var tainoHistorial = []; // memoria de la conversación actual
-var tainoPensando  = false;
-
-var TAINO_SYSTEM = `Eres Taíno, la mascota oficial de La Polla Mundialista 2026.
-Eres un experto apasionado en dos temas únicamente:
-
-1. LAS REGLAS DE ESTA POLLA:
-- Ventana de apuesta: 100% antes del partido, 50% en primer tiempo, 0% en segundo tiempo y después
-- Ciclo 1 (Fase de Grupos, 72 partidos): puntos por resultado, marcador exacto, diferencia de goles
-- Ciclo 2 (Eliminatorias, 32 partidos): mismos microjuegos + factor multiplicador por fase
-- Microjuegos dentro de cada partido: resultado (G/E/P), marcador exacto, goles local, goles visita, diferencia
-- Especiales Ciclo 1: adivinar clasificados por grupo (orden exacto o cualquier orden)
-- Especiales Ciclo 2: campeón, subcampeón, tercero, cuarto
-- Premios: ganador Ciclo 1, ganador Ciclo 2, campeón total
-
-2. EL MUNDIAL FIFA 2026:
-- 48 selecciones, 12 grupos de 4, 104 partidos
-- 3 países anfitriones: Estados Unidos, México, Canadá
-- 16 sedes en total
-- Del 11 de junio al 19 de julio de 2026
-- Final en MetLife Stadium, Nueva Jersey
-- Nuevo formato: los 2 primeros de cada grupo + 8 mejores terceros pasan a 16avos
-- Grupos: A(México, Sudáfrica, Corea del Sur, UEFA D), B(Canadá, Qatar, Suiza, UEFA 1), C(Brasil, Marruecos, Haití, Escocia), D(EE.UU., Paraguay, Australia, UEFA C), E(Alemania, Curazao, Costa de Marfil, Ecuador), F(Países Bajos, Japón, UEFA B, Túnez), G(Bélgica, Egipto, Irán, Nueva Zelanda), H(España, Cabo Verde, Arabia Saudita, Uruguay), I(Francia, Senegal, Rep./Irak/Bol., Noruega), J(Argentina, Argelia, Austria, Jordania), K(Portugal, Rep.1, Uzbekistán, Colombia), L(México, Rep.2, Pol./Ucrania, Turquía)
-
-PERSONALIDAD:
-- Hablas en español colombiano, eres energético y apasionado por el fútbol
-- Usas emojis con moderación (1-2 por respuesta máximo)
-- Máximo 3 oraciones por respuesta — eres conciso y directo
-- Si te preguntan algo fuera de estos dos temas, redirige amablemente: "Eso está fuera de mi cancha, pero sobre reglas o el Mundial te cuento todo 🌿"
-- Nunca inventas datos — si no sabes algo específico, lo dices claramente`;
-
-function tainoPreguntar(texto) {
-  var input = document.getElementById('taino-input');
-  if (input) input.value = texto;
-  tainoEnviar();
-}
-
-function tainoEnviar() {
-  if (tainoPensando) return;
-  var input = document.getElementById('taino-input');
-  if (!input) return;
-  var pregunta = input.value.trim();
-  if (!pregunta) return;
-
-  input.value = '';
-  tainoPensando = true;
-
-  // Mostrar pregunta del usuario en la burbuja
-  tainoMostrarUsuario(pregunta);
-
-  // Mostrar estado pensando
-  tainoMostrarPensando();
-
-  // Agregar al historial
-  tainoHistorial.push({ role: 'user', content: pregunta });
-
-  // Llamar a la API
-  var TAINO_KEY = window.TAINO_API_KEY || '';
-  if (!TAINO_KEY) {
-    tainoMostrarRespuesta('Falta configurar el API key. Agrega window.TAINO_API_KEY = "sk-ant-..." antes del cierre del script 🌿');
-    tainoPensando = false;
-    return;
-  }
-  fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': TAINO_KEY,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-allow-browser': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 300,
-      system: TAINO_SYSTEM,
-      messages: tainoHistorial.slice(-6) // últimas 3 preguntas + respuestas
-    })
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    var respuesta = (data.content && data.content[0] && data.content[0].text)
-      ? data.content[0].text
-      : '¡Ups! Algo falló. Intenta de nuevo 🌿';
-
-    // Agregar respuesta al historial
-    tainoHistorial.push({ role: 'assistant', content: respuesta });
-
-    // Mostrar respuesta
-    tainoMostrarRespuesta(respuesta);
-    tainoPensando = false;
-
-    // Animar avatar
-    var avatar = document.getElementById('taino-avatar');
-    if (avatar) {
-      avatar.style.transform = 'scale(1.15)';
-      setTimeout(function() { avatar.style.transform = 'scale(1)'; }, 300);
-    }
-  })
-  .catch(function(err) {
-    tainoMostrarRespuesta('¡Ups! No pude conectarme. Revisa tu conexión 🌿');
-    tainoPensando = false;
-  });
-}
-
-function tainoMostrarUsuario(texto) {
-  var bubble = document.getElementById('taino-bubble');
-  if (!bubble) return;
-  // Agregar burbuja del usuario encima
-  var userBubble = document.createElement('div');
-  userBubble.style.cssText = 'text-align:right;margin-bottom:10px;';
-  userBubble.innerHTML = '<span style="display:inline-block;background:#007aff;color:#fff;border-radius:16px 16px 4px 16px;padding:10px 14px;font-size:14px;max-width:85%;">' + tainoEscapar(texto) + '</span>';
-  bubble.parentNode.insertBefore(userBubble, bubble);
-}
-
-function tainoMostrarPensando() {
-  var bubble = document.getElementById('taino-bubble');
-  if (!bubble) return;
-  bubble.innerHTML = '<span style="color:#27ae60;font-style:italic;">Taíno está pensando</span> <span id="taino-dots">●</span>';
-  // Animación de puntos
-  var i = 0, dots = ['●', '●●', '●●●', '●●'];
-  window._tainoDotInterval = setInterval(function() {
-    var el = document.getElementById('taino-dots');
-    if (el) el.textContent = dots[i++ % dots.length];
-  }, 400);
-}
-
-function tainoMostrarRespuesta(texto) {
-  clearInterval(window._tainoDotInterval);
-  var bubble = document.getElementById('taino-bubble');
-  if (!bubble) return;
-  bubble.style.cssText = 'background:#f0faf4;border:1px solid #d5f0e0;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;color:#1a1a1a;line-height:1.5;transition:opacity .3s;';
-  bubble.textContent = texto;
-  // Scroll suave hacia Taíno
-  bubble.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function tainoEscapar(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
 // ── GENERADOR DE EXTRACTO PDF ─────────────────────────────────────────────
 function generarExtractoPDF() {
   var { jsPDF } = window.jspdf;
@@ -4512,11 +4356,103 @@ function generarExtractoPDF() {
 }
 
 
-// ══════════════════════════════════════════════════════════════
-// TAÍNO API KEY — reemplaza con tu key real de Anthropic
-// Obtén tu key en: https://console.anthropic.com/
-// ══════════════════════════════════════════════════════════════
+// ╔══════════════════════════════════════════════════════════════════
+// TAINO - Asistente AI de reglas y Mundial 2026
+// Modelo: claude-haiku-4-5-20251001
+// ╚══════════════════════════════════════════════════════════════════
 
+var tainoHistorial = [];
+var tainoPensando  = false;
+
+var TAINO_SYSTEM = "Eres Taino, la mascota oficial de La Polla Mundialista 2026. Eres experto en dos temas unicamente: (1) LAS REGLAS DE ESTA POLLA: ventana de apuesta 100% antes del partido / 50% en primer tiempo / 0% despues, microjuegos por partido (resultado G/E/P, marcador exacto, goles local, goles visita, diferencia), puntos por fase con multiplicadores, especiales Ciclo 1 clasificados por grupo y Ciclo 2 finalistas. (2) EL MUNDIAL FIFA 2026: 48 selecciones, 12 grupos de 4, 104 partidos, 3 paises anfitriones USA/Mexico/Canada, del 11 junio al 19 julio 2026, final en MetLife Stadium Nueva Jersey. Grupos: A(Mexico,Sudafrica,Corea del Sur,UEFA D), B(Canada,Qatar,Suiza,UEFA 1), C(Brasil,Marruecos,Haiti,Escocia), D(EE.UU.,Paraguay,Australia,UEFA C), E(Alemania,Curazao,Costa de Marfil,Ecuador), F(Paises Bajos,Japon,UEFA B,Tunez), G(Belgica,Egipto,Iran,Nueva Zelanda), H(Espana,Cabo Verde,Arabia Saudita,Uruguay), I(Francia,Senegal,Rep.Irak/Bol.,Noruega), J(Argentina,Argelia,Austria,Jordania), K(Portugal,Rep.1,Uzbekistan,Colombia), L(Mexico,Rep.2,Pol./Ucrania,Turquia). PERSONALIDAD: hablas en espanol colombiano, eres energetico y apasionado. Maximo 3 oraciones por respuesta. Si te preguntan algo fuera de estos temas responde: Eso esta fuera de mi cancha, pero sobre reglas o el Mundial te cuento todo.";
+
+function tainoPreguntar(texto) {
+  var input = document.getElementById('taino-input');
+  if (input) input.value = texto;
+  tainoEnviar();
+}
+
+function tainoEnviar() {
+  if (tainoPensando) return;
+  var input = document.getElementById('taino-input');
+  if (!input) return;
+  var pregunta = input.value.trim();
+  if (!pregunta) return;
+
+  input.value = '';
+  tainoPensando = true;
+
+  tainoMostrarUsuario(pregunta);
+  tainoMostrarPensando();
+  tainoHistorial.push({ role: 'user', content: pregunta });
+
+  var key = window.TAINO_API_KEY || '';
+  if (!key || key.indexOf('REEMPLAZA') > -1) {
+    tainoMostrarRespuesta('Falta configurar el API key de Taino.');
+    tainoPensando = false;
+    return;
+  }
+
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-allow-browser': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 300,
+      system: TAINO_SYSTEM,
+      messages: tainoHistorial.slice(-6)
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    var resp = (data.content && data.content[0] && data.content[0].text)
+      ? data.content[0].text
+      : 'Ups! Algo fallo. Intenta de nuevo.';
+    tainoHistorial.push({ role: 'assistant', content: resp });
+    tainoMostrarRespuesta(resp);
+    tainoPensando = false;
+    var av = document.getElementById('taino-avatar');
+    if (av) { av.style.transform = 'scale(1.15)'; setTimeout(function(){ av.style.transform = 'scale(1)'; }, 300); }
+  })
+  .catch(function() {
+    tainoMostrarRespuesta('No pude conectarme. Verifica tu conexion.');
+    tainoPensando = false;
+  });
+}
+
+function tainoMostrarUsuario(texto) {
+  var bubble = document.getElementById('taino-bubble');
+  if (!bubble) return;
+  var d = document.createElement('div');
+  d.style.cssText = 'text-align:right;margin-bottom:10px;';
+  var span = document.createElement('span');
+  span.style.cssText = 'display:inline-block;background:#007aff;color:#fff;border-radius:16px 16px 4px 16px;padding:10px 14px;font-size:14px;max-width:85%;';
+  span.textContent = texto;
+  d.appendChild(span);
+  bubble.parentNode.insertBefore(d, bubble);
+}
+
+function tainoMostrarPensando() {
+  var bubble = document.getElementById('taino-bubble');
+  if (!bubble) return;
+  bubble.textContent = 'Taino esta pensando...';
+  bubble.style.color = '#27ae60';
+  bubble.style.fontStyle = 'italic';
+}
+
+function tainoMostrarRespuesta(texto) {
+  var bubble = document.getElementById('taino-bubble');
+  if (!bubble) return;
+  bubble.style.color = '#1a1a1a';
+  bubble.style.fontStyle = 'normal';
+  bubble.textContent = texto;
+  bubble.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 
 </script>
 </body>
