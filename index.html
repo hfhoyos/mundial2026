@@ -613,7 +613,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
             <span class="snav-icon">📋</span> Reglas
           </button>
           <button class="sidebar-nav-item" id="snav-estadios" onclick="goTo('s-estadios')">
-            <span class="snav-icon">🏟️</span> Estadios
+            <span class="snav-icon">⚙️</span> APIs
           </button>
           <button class="sidebar-nav-item" id="snav-admin" onclick="goTo('s-admin')">
             <span class="snav-icon">📊</span> Resumen
@@ -647,6 +647,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
       <div class="screen-content">
 
         <!-- LOGIN -->
+
+        <!-- ═══ PLANTA BAJA — Login y autenticación ═══ -->
         <div class="screen active" id="s-login">
           <div class="login-bg">
             <div class="login-logo">⚽</div>
@@ -701,6 +703,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         </div>
 
         <!-- HOME -->
+
+        <!-- ═══ TORRE PARTIDOS ═══ -->
         <div class="screen" id="s-home">
           <div class="home-header">
             <div class="home-greeting">Buenas tardes</div>
@@ -787,6 +791,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         </div>
 
         <!-- REGLAS -->
+
+        <!-- ═══ TORRE REGLAS ═══ -->
         <div class="screen" id="s-reglas">
           <div style="background:#fff;padding:16px 20px 12px;border-bottom:0.5px solid rgba(0,0,0,0.1);">
             <div style="font-size:22px;font-weight:700;color:#000;">Reglas</div>
@@ -796,6 +802,47 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
 
             <!-- ACCORDION BUTTONS -->
             <div id="reglas-accordion"></div>
+
+            <!-- ╔══════════════════════════════════════════════════
+                 ║ TAÍNO — Asistente de reglas (Hola Mundo AI)
+                 ╚══════════════════════════════════════════════════ -->
+            <div id="taino-section" style="margin-top:24px;border-top:0.5px solid rgba(0,0,0,0.08);padding-top:20px;">
+
+              <!-- Avatar + burbuja -->
+              <div style="display:flex;align-items:flex-end;gap:12px;margin-bottom:16px;">
+                <div id="taino-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2ecc71,#27ae60);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;box-shadow:0 2px 8px rgba(46,204,113,0.4);transition:transform .2s;">
+                  🦜
+                </div>
+                <div style="flex:1;">
+                  <div style="font-size:11px;font-weight:700;color:#27ae60;margin-bottom:4px;">TAÍNO · Mascota Oficial</div>
+                  <div id="taino-bubble" style="background:#f0faf4;border:1px solid #d5f0e0;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;color:#1a1a1a;line-height:1.5;">
+                    ¡Hola! Soy Taíno 🌿 Pregúntame sobre las reglas de la polla o sobre el Mundial 2026. ¡Estoy aquí para ayudarte!
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sugerencias rápidas -->
+              <div id="taino-chips" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+                <button onclick="tainoPreguntar('¿Cómo funciona la ventana de apuesta?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">⏱️ Ventana</button>
+                <button onclick="tainoPreguntar('¿Cuántos puntos gano si acierto el marcador exacto?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">🎯 Puntos</button>
+                <button onclick="tainoPreguntar('¿Qué son los microjuegos?')" style="background:#f0faf4;border:1px solid #b7e4c7;border-radius:20px;padding:6px 12px;font-size:12px;color:#27ae60;cursor:pointer;font-weight:600;">🎮 Microjuegos</button>
+                <button onclick="tainoPreguntar('¿Cuántos equipos hay en el Mundial 2026?')" style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:20px;padding:6px 12px;font-size:12px;color:#4f46e5;cursor:pointer;font-weight:600;">🌍 Mundial</button>
+              </div>
+
+              <!-- Input -->
+              <div style="display:flex;gap:8px;align-items:center;">
+                <input id="taino-input" type="text" placeholder="Pregúntale a Taíno..."
+                  style="flex:1;background:#f5f5f7;border:none;border-radius:12px;padding:11px 14px;font-size:14px;color:#1a1a1a;outline:none;"
+                  onkeydown="if(event.key==='Enter' && !event.shiftKey){ tainoEnviar(); }"
+                  maxlength="200">
+                <button id="taino-btn" onclick="tainoEnviar()"
+                  style="background:#27ae60;color:#fff;border:none;border-radius:12px;width:44px;height:44px;font-size:20px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s;">
+                  ➤
+                </button>
+              </div>
+              <div style="font-size:10px;color:#c7c7cc;margin-top:6px;text-align:center;">Powered by Claude · Solo responde sobre reglas y el Mundial 2026</div>
+
+            </div>
 
           </div>
         </div>
@@ -891,6 +938,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         </div>
 
         <!-- TABLA -->
+
+        <!-- ═══ TORRE TABLA ═══ -->
         <div class="screen" id="s-tabla">
           <div class="tabla-header">
             <div class="tabla-title">Tabla de posiciones</div>
@@ -1236,6 +1285,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         </div>
 
         <!-- ESPECIALES -->
+
+        <!-- ═══ TORRE ESPECIALES ═══ -->
         <div class="screen" id="s-especiales">
           <div class="esp-header">
             <div class="esp-title">Categorías especiales</div>
@@ -1307,26 +1358,30 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         </div>
 
         <!-- RESUMEN -->
+
+        <!-- ═══ BACKOFFICE — APIs (temporal) ═══ -->
         <div class="screen" id="s-estadios">
-          <div style="padding:16px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-              <div>
-                <div style="font-size:20px;font-weight:700;color:#000;">Estadios</div>
-                <div style="font-size:13px;color:#8e8e93;">FIFA World Cup 2026</div>
+          <div style="padding:16px 16px 100px;">
+            <div style="margin-bottom:16px;">
+              <div style="font-size:18px;font-weight:700;color:#000;margin-bottom:2px;">⚙️ Laboratorio de APIs</div>
+              <div style="font-size:12px;color:#8e8e93;">Velneo · Carga automática al entrar · ↻ para refrescar individualmente</div>
+            </div>
+            <div id="lab-apis" style="display:flex;flex-direction:column;gap:10px;"></div>
+            <div id="lab-resultado" style="margin-top:20px;display:none;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <div id="lab-titulo" style="font-size:14px;font-weight:700;color:#000;"></div>
+                <button onclick="cerrarResultado()" style="background:none;border:none;font-size:20px;color:#8e8e93;cursor:pointer;line-height:1;">✕</button>
               </div>
-              <button id="btn-consultar-estadios" onclick="consultarEstadios()" style="background:#007aff;color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;">
-                Consultar estadios
-              </button>
+              <div id="lab-meta" style="font-size:11px;color:#8e8e93;margin-bottom:10px;"></div>
+              <div style="font-size:10px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">JSON crudo</div>
+              <pre id="lab-json" style="background:#1c1c1e;color:#e5e5ea;border-radius:12px;padding:12px;font-size:10px;overflow-x:auto;white-space:pre-wrap;word-break:break-all;max-height:220px;overflow-y:auto;margin:0 0 14px;"></pre>
+              <div style="font-size:10px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Tabla resumen</div>
+              <div id="lab-tabla" style="overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;"></div>
             </div>
-            <div id="estadios-estado" style="display:none;text-align:center;padding:32px;color:#8e8e93;font-size:14px;">
-              Cargando estadios...
-            </div>
-            <div id="estadios-error" style="display:none;background:#fff2f2;border:0.5px solid #ffcdd2;border-radius:12px;padding:14px;color:#c62828;font-size:13px;margin-bottom:12px;"></div>
-            <div id="estadios-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"></div>
           </div>
         </div>
 
-        <div class="screen" id="s-admin">
+                <div class="screen" id="s-admin">
           <div class="admin-header"><div class="admin-title">Resumen del torneo</div><div class="admin-sub">La Polla Mundialista 2026 · En vivo</div></div>
           <div class="admin-stats">
             <div class="admin-stat"><div class="admin-stat-num">127</div><div class="admin-stat-lbl">Jugadores</div></div>
@@ -1386,7 +1441,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
         <button class="tab-item" id="tab-especiales"><div class="tab-icon">⭐</div><div class="tab-label">Especiales</div></button>
         <button class="tab-item" id="tab-tabla"><div class="tab-icon">🏆</div><div class="tab-label">Tabla</div></button>
         <button class="tab-item" id="tab-reglas"><div class="tab-icon">📋</div><div class="tab-label">Reglas</div></button>
-        <button class="tab-item" id="tab-estadios" onclick="goTo('s-estadios')"><div class="tab-icon">🏟️</div><div class="tab-label">Estadios</div></button>
+        <button class="tab-item" id="tab-estadios" onclick="goTo('s-estadios')"><div class="tab-icon">⚙️</div><div class="tab-label">APIs</div></button>
       </div>
 
         </div><!-- /main-content -->
@@ -1397,6 +1452,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ══════════════════════════════════════════════════════════════
+// TAÍNO API KEY — reemplaza con tu key real de Anthropic
+// Obtén tu key en: https://console.anthropic.com/
+// ══════════════════════════════════════════════════════════════
+window.TAINO_API_KEY = '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';
+
 
 // ── BRACKET VARIABLES ────────────────────────────────────────────────────
 var pronosticoBracket = {};
@@ -1566,6 +1627,9 @@ var faseLabels = {
 var fasesOrden = ['16avos','octavos','cuartos','semis','3y4','final'];
 
 
+// ╔══════════════════════════════════════════════════════
+// ║ DATOS MOCK — reemplazar en Fase 1 con APIs de Velneo
+// ╚══════════════════════════════════════════════════════
 // ── DATOS ─────────────────────────────────────────────────────────────────
 var equipos = [
   {flag:'🇧🇷',name:'Brasil'},{flag:'🇦🇷',name:'Argentina'},{flag:'🇫🇷',name:'Francia'},
@@ -1589,114 +1653,198 @@ var activeGrupo = null;
 var openDropId = null;
 var colScore = 1, porScore = 1;
 
-// ── NAVEGACIÓN ────────────────────────────────────────────────────────────
-var tabMap = {
-  's-home':'tab-home','s-partidos':'tab-reglas','s-partido':'tab-reglas','s-reglas':'tab-reglas',
-  's-tabla':'tab-tabla','s-especiales':'tab-especiales','s-estadios':'tab-estadios'
-};
-
-function goTo(screenId) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(screenId).classList.add('active');
-  document.querySelector('.screen-content').scrollTop = 0;
-  var tb = document.getElementById('tab-bar');
-  tb.style.display = (screenId === 's-login' || screenId === 's-cuentas') ? 'none' : 'flex';
-  document.querySelectorAll('.tab-item').forEach(function(t){ t.classList.remove('active'); });
-  if (tabMap[screenId]) document.getElementById(tabMap[screenId]).classList.add('active');
-  if (screenId === 's-especiales') initEspeciales();
-  if (screenId === 's-reglas') initReglas();
-  if (screenId === 's-partidos') renderPartidosContent();
-}
+// [tabMap v1 + goTo v1 eliminados — ver versión completa al final]
 
 // ── ESTADIOS ──────────────────────────────────────────────────────────────
-var estadiosCargados = false;
+// ╔══════════════════════════════════════════════════════
+// ║ BACKOFFICE — Laboratorio de APIs (TEMPORAL)
+// ╚══════════════════════════════════════════════════════
+// ── LABORATORIO DE APIs ──────────────────────────────────────────────────
+var BASE = 'https://sion.cloud.a01.hysintegrar.com/fifa2026/vERP_2_dat_dat/v1';
+var KEY  = 'SuzvTp4qwXQtAVFJbdzP';
+var labState = { registros: [], campos: [], pagina: 0, porPagina: 10, apiActual: null };
 
-function consultarEstadios() {
-  if (estadiosCargados) return;
+var LAB_APIS = [
+  { id:'fifa_etd',      label:'Estadios',       icon:'🏟️', color:'#007aff', desc:'16 sedes del Mundial' },
+  { id:'fifa_fas',      label:'Fases',          icon:'📅', color:'#5856d6', desc:'Grupos · 16avos · Final' },
+  { id:'fifa_grp',      label:'Grupos',         icon:'🔤', color:'#34c759', desc:'12 grupos A–L' },
+  { id:'fifa_equ',      label:'Equipos',        icon:'⚽', color:'#ff9500', desc:'Tabla de posiciones' },
+  { id:'fifa_clf',      label:'Clasificados',   icon:'✅', color:'#30b0c7', desc:'2 clasificados por grupo' },
+  { id:'fifa_reg',      label:'Reglas',         icon:'📋', color:'#ff3b30', desc:'Puntos y configuración' },
+  { id:'fifa_reu',      label:'Reuniones',      icon:'👥', color:'#ff2d55', desc:'Grupos de jugadores' },
+  { id:'fifa_ptd',      label:'Partidos',       icon:'🏆', color:'#af52de', desc:'Fixture completo' },
+  { id:'fifa_ptd_est2', label:'Partidos est=2', icon:'🔴', color:'#c0392b', desc:'Filtro: estado=2', filtro: true },
+  { id:'fifa_jug',      label:'Jugadores',      icon:'🎮', color:'#1c1c1e', desc:'Ranking y acumulados' },
+  { id:'fifa_jug_pro',  label:'Pronósticos',    icon:'🎯', color:'#636366', desc:'Apuestas por partido' },
+];
 
-  var btn = document.getElementById('btn-consultar-estadios');
-  var estado = document.getElementById('estadios-estado');
-  var error = document.getElementById('estadios-error');
-  var grid = document.getElementById('estadios-grid');
+var labInited = false;
 
-  btn.disabled = true;
-  btn.textContent = 'Consultando...';
-  estado.style.display = 'block';
-  error.style.display = 'none';
-  grid.innerHTML = '';
+function initLab() {
+  var container = document.getElementById('lab-apis');
+  if (!container) return;
 
-  var API_URL = 'https://sion.cloud.a01.hysintegrar.com/fifa2026/vERP_2_dat_dat/v1/fifa_etd?api_key=SuzvTp4qwXQtAVFJbdzP';
+  // Construir tarjetas si aún no existen
+  if (!labInited) {
+    container.innerHTML = '';
+    LAB_APIS.forEach(function(api) {
+      var card = document.createElement('div');
+      card.id = 'lab-card-' + api.id;
+      card.style.cssText = 'display:flex;align-items:center;gap:12px;background:#fff;border:0.5px solid #e5e5ea;border-radius:14px;padding:14px;';
+      card.innerHTML =
+        '<div style="width:40px;height:40px;border-radius:10px;background:'+api.color+'22;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">'+api.icon+'</div>'+
+        '<div style="flex:1;">'+
+          '<div style="font-size:14px;font-weight:700;color:#000;">'+api.label+'</div>'+
+          '<div style="font-size:11px;color:#8e8e93;">'+api.desc+'</div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:8px;">'+
+          '<div id="lab-badge-'+api.id+'" style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;background:#f2f2f7;color:#8e8e93;white-space:nowrap;">...</div>'+
+          '<button id="lab-refresh-'+api.id+'" onclick="labConsultar(this.dataset.id)" data-id="'+api.id+'" style="background:'+api.color+';color:#fff;border:none;border-radius:10px;width:32px;height:32px;font-size:16px;cursor:pointer;flex-shrink:0;line-height:1;" title="Refrescar">↻</button>'+
+        '</div>';
+      container.appendChild(card);
+    });
+    // Agregar input de filtro personalizado a la tarjeta est=2
+    var card2 = document.getElementById('lab-card-fifa_ptd_est2');
+    if (card2) {
+      var descEl = card2.querySelector('div > div:last-child');
+      if (descEl) descEl.innerHTML = '<div style="display:flex;align-items:center;gap:6px;margin-top:4px;">' +
+        '<span style="font-size:11px;color:#8e8e93;">est=</span>' +
+        '<input id="lab-filtro-est" type="number" value="2" min="0" max="9" style="width:44px;padding:3px 6px;border:1px solid #e5e5ea;border-radius:6px;font-size:12px;font-weight:700;color:#c0392b;text-align:center;" />' +
+        '<span style="font-size:11px;color:#8e8e93;">· toca ↻ para consultar</span>' +
+        '</div>';
+    }
+    labInited = true;
+  }
 
-  fetch(API_URL)
-    .then(function(res) {
-      if (!res.ok) throw new Error('Error HTTP ' + res.status);
-      return res.json();
-    })
+  // Cargar todos automáticamente (en paralelo)
+  LAB_APIS.forEach(function(api) {
+    labFetch(api);
+  });
+}
+
+function labFetch(api) {
+  var badge = document.getElementById('lab-badge-' + api.id);
+  var btn   = document.getElementById('lab-refresh-' + api.id);
+  if (badge) { badge.textContent = '⟳'; badge.style.background='#fff3cd'; badge.style.color='#856404'; }
+  if (btn)   { btn.style.opacity = '0.5'; }
+
+  var url;
+  if (api.filtro) {
+    var val = document.getElementById('lab-filtro-est').value.trim() || '2';
+    url = BASE + '/fifa_ptd?api_key=' + KEY + '&filter[est]=' + val;
+  } else {
+    url = api.url || (BASE + '/' + api.id + '?api_key=' + KEY);
+  }
+
+  fetch(url)
+    .then(function(r) { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(data) {
-      estado.style.display = 'none';
-      btn.textContent = data.count + ' estadios cargados ✓';
-      btn.style.background = '#34c759';
-
-      var estadios = data.fifa_etd.filter(function(e){ return !e.off; });
-      var flagPais = { 'Canadá':'🇨🇦', 'México':'🇲🇽', 'EE.UU.':'🇺🇸' };
-
-      estadios.forEach(function(e) {
-        var utcStr = e.utc_ref >= 0 ? 'UTC+' + e.utc_ref : 'UTC' + e.utc_ref;
-        var flag = flagPais[e.pai] || '🏟️';
-        var card = document.createElement('div');
-        card.style.cssText = 'background:#fff;border-radius:14px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.07);cursor:pointer;';
-        card.innerHTML =
-          '<div style="font-size:22px;margin-bottom:6px;">' + flag + '</div>' +
-          '<div style="font-size:13px;font-weight:700;color:#000;line-height:1.3;margin-bottom:4px;">' + e.name + '</div>' +
-          '<div style="font-size:11px;color:#8e8e93;margin-bottom:6px;">' + e.pai + ' · ' + utcStr + '</div>' +
-          '<a href="' + e.gps + '" target="_blank" style="font-size:11px;color:#007aff;text-decoration:none;font-weight:600;">Ver en mapa →</a>';
-        grid.appendChild(card);
-      });
-
-      estadiosCargados = true;
+      var key = api.url ? 'fifa_ptd' : api.id;
+      var registros = data[key] || data[Object.keys(data).find(function(k){ return Array.isArray(data[k]); })] || [];
+      var count = data.count || registros.length;
+      if (badge) { badge.textContent = count+' reg ✓'; badge.style.background='#d4edda'; badge.style.color='#155724'; }
+      if (btn)   { btn.style.opacity = '1'; }
+      // Guardar datos en el card para ver después
+      var card = document.getElementById('lab-card-'+api.id);
+      if (card) { card._data = data; card._api = api; card.style.cursor='pointer'; card.onclick = function(e){ if(e.target.tagName==='BUTTON') return; labMostrar(api, data); }; }
     })
     .catch(function(err) {
-      estado.style.display = 'none';
-      error.style.display = 'block';
-      error.textContent = 'No se pudo conectar con Velneo: ' + err.message;
-      btn.disabled = false;
-      btn.textContent = 'Reintentar';
-      btn.style.background = '#ff3b30';
+      if (badge) { badge.textContent = 'Error'; badge.style.background='#f8d7da'; badge.style.color='#721c24'; }
+      if (btn)   { btn.style.opacity = '1'; }
     });
 }
 
-// ── CLOCK ─────────────────────────────────────────────────────────────────
-function updateClock() {
-  var now = new Date();
-  var h = now.getHours().toString().padStart(2,'0');
-  var m = now.getMinutes().toString().padStart(2,'0');
-  var _cl = document.getElementById('clock'); if(_cl) _cl.textContent = h + ':' + m;
-}
-updateClock();
-setInterval(updateClock, 10000);
-
-// ── SCORE PICKER ──────────────────────────────────────────────────────────
-function changeScore(team, delta) {
-  if (team === 'col') { colScore = Math.max(0, colScore + delta); document.getElementById('col-score').textContent = colScore; }
-  else { porScore = Math.max(0, porScore + delta); document.getElementById('por-score').textContent = porScore; }
-  var diff = Math.abs(colScore - porScore);
-  document.getElementById('lbl-diff').textContent = 'Diferencia de goles (' + diff + ')';
-  document.getElementById('lbl-col').textContent = 'Goles Colombia (' + colScore + ')';
-  document.getElementById('lbl-por').textContent = 'Goles Portugal (' + porScore + ')';
-  document.getElementById('score-display').textContent = colScore + ' - ' + porScore;
+function labConsultar(apiId) {
+  var api = LAB_APIS.find(function(a){ return a.id === apiId; });
+  if (api) labFetch(api);
 }
 
-// ── TABLA TABS ────────────────────────────────────────────────────────────
-function switchTab(btn) {
-  document.querySelectorAll('.tabla-tab').forEach(function(t){ t.classList.remove('active'); });
-  btn.classList.add('active');
+function labMostrar(api, data) {
+  var key = api.url ? 'fifa_ptd' : api.id;
+  var registros = data[key] || data[Object.keys(data).find(function(k){ return Array.isArray(data[k]); })] || [];
+  var count = data.count || registros.length;
+  var excluir = ['alt_usr','alt_tim','mod_usr','mod_tim','off_usr','off_tim','ban','fot'];
+  var campos = registros.length > 0
+    ? Object.keys(registros[0]).filter(function(k){ return excluir.indexOf(k) === -1; })
+    : [];
+
+  labState.registros = registros;
+  labState.campos = campos;
+  labState.pagina = 0;
+  labState.apiActual = api;
+
+  var url = api.url || (BASE + '/' + api.id + '?api_key=' + KEY);
+  document.getElementById('lab-titulo').textContent = api.icon + ' ' + api.label;
+  document.getElementById('lab-meta').textContent = count + ' registros · ' + url.replace('?api_key='+KEY,'?api_key=***');
+  document.getElementById('lab-json').textContent = JSON.stringify(data, null, 2);
+  document.getElementById('lab-resultado').style.display = 'block';
+  labRenderTabla();
+  setTimeout(function(){
+    document.querySelector('.screen-content').scrollTop = document.getElementById('lab-resultado').offsetTop - 20;
+  }, 50);
 }
 
-// ── ESPECIALES ────────────────────────────────────────────────────────────
-function getFlag(name) {
-  var e = equipos.find(function(x){ return x.name === name; });
-  return e ? e.flag : '🔄';
+function labRenderTabla() {
+  var tablaEl = document.getElementById('lab-tabla');
+  var registros = labState.registros;
+  var campos    = labState.campos;
+  var pag       = labState.pagina;
+  var pp        = labState.porPagina;
+  var total     = registros.length;
+  var totalPags = Math.ceil(total / pp);
+  var inicio    = pag * pp;
+  var fin       = Math.min(inicio + pp, total);
+  var muestra   = registros.slice(inicio, fin);
+
+  if (total === 0) { tablaEl.innerHTML = '<div style="color:#8e8e93;font-size:13px;padding:8px 0;">Sin registros.</div>'; return; }
+
+  var t = '<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;"><table style="width:max-content;min-width:100%;border-collapse:collapse;font-size:11px;">';
+  t += '<thead><tr>';
+  campos.forEach(function(c) {
+    t += '<th style="padding:6px 8px;background:#f2f2f7;color:#3c3c43;font-weight:700;text-align:left;border-bottom:1px solid #e5e5ea;white-space:nowrap;">'+c+'</th>';
+  });
+  t += '</tr></thead><tbody>';
+  muestra.forEach(function(r, i) {
+    t += '<tr style="background:'+(i%2===0?'#fff':'#f9f9f9')+'">';
+    campos.forEach(function(c) {
+      var val = r[c];
+      if (val===null||val===undefined) val='—';
+      if (typeof val==='object') val=JSON.stringify(val).substring(0,25)+'…';
+      if (String(val).length>28) val=String(val).substring(0,28)+'…';
+      t += '<td style="padding:5px 8px;color:#1c1c1e;border-bottom:0.5px solid #f0f0f0;white-space:nowrap;">'+val+'</td>';
+    });
+    t += '</tr>';
+  });
+  t += '</tbody></table></div>';
+  t += '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 4px;font-size:12px;color:#8e8e93;">';
+  t += '<span>'+(inicio+1)+'–'+fin+' de '+total+' registros</span>';
+  t += '<div style="display:flex;gap:8px;">';
+  var btnStyle = 'border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;';
+  t += '<button onclick="labPagina(-1)" '+(pag===0?'disabled':'')+' style="'+btnStyle+'background:'+(pag===0?'#f2f2f7':'#007aff')+';color:'+(pag===0?'#c7c7cc':'#fff')+';">← Ant.</button>';
+  t += '<button onclick="labPagina(1)"  '+(pag>=totalPags-1?'disabled':'')+' style="'+btnStyle+'background:'+(pag>=totalPags-1?'#f2f2f7':'#007aff')+';color:'+(pag>=totalPags-1?'#c7c7cc':'#fff')+';">Sig. →</button>';
+  t += '</div></div>';
+  t += '<div style="font-size:11px;color:#c7c7cc;text-align:center;padding-bottom:4px;">Pág. '+(pag+1)+' / '+totalPags+'</div>';
+  tablaEl.innerHTML = t;
 }
+
+function labPagina(dir) {
+  var totalPags = Math.ceil(labState.registros.length / labState.porPagina);
+  labState.pagina = Math.max(0, Math.min(labState.pagina + dir, totalPags - 1));
+  labRenderTabla();
+}
+
+function cerrarResultado() {
+  document.getElementById('lab-resultado').style.display = 'none';
+}
+
+function consultarEstadios() {}
+
+// Auto-init laboratorio si ya está visible al cargar
+document.addEventListener("DOMContentLoaded", function() {
+  if (document.getElementById("lab-apis")) initLab();
+});
+
+// [changeScore · switchTab · getFlag v1 eliminadas — ver versión única más adelante]
 
 function closeAllDrops() {
   document.querySelectorAll('.esp-drop').forEach(function(d){ d.classList.remove('open'); });
@@ -1892,13 +2040,7 @@ function renderGrupoPanel(k) {
   buildGrupoDrop('drop-g' + k + '-2', k, '2', sel['2']);
 }
 
-function initEspeciales() {
-  refreshAllFinalistas();
-  buildGruposGrid();
-  renderGrupoPanel(activeGrupo);
-}
-
-
+// [initEspeciales v1 eliminada]
 
 // ── FIXTURE LAS FINALES ───────────────────────────────────────────────────
 var fixtureFinales = {
@@ -2153,6 +2295,9 @@ function openConfirmScreen(opts) {
   goTo('s-confirm');
 }
 
+// ╔══════════════════════════════════════════════════════
+// ║ TORRE PARTIDOS — Fixture · Hoy · Grupos · Bracket
+// ╚══════════════════════════════════════════════════════
 // ── PARTIDOS TABS ─────────────────────────────────────────────────────────
 var currentPartidosTab = 'grupos';
 var currentGrupoPos = 'A';
@@ -2594,45 +2739,7 @@ function initBracketListeners(container) {
 
 function renderBracketHTML() { return renderBracket(); }
 
-function goTo(screenId) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(screenId).classList.add('active');
-  document.querySelector('.screen-content').scrollTop = 0;
-  var tb = document.getElementById('tab-bar');
-  tb.style.display = (screenId === 's-login' || screenId === 's-cuentas') ? 'none' : 'flex';
-  document.querySelectorAll('.tab-item').forEach(function(t){ t.classList.remove('active'); });
-  if (tabMap[screenId]) document.getElementById(tabMap[screenId]).classList.add('active');
-  if (screenId === 's-especiales') initEspeciales();
-  if (screenId === 's-reglas') initReglas();
-  if (screenId === 's-partidos') renderPartidosContent();
-}
-
-// ── CLOCK ─────────────────────────────────────────────────────────────────
-function updateClock() {
-  var now = new Date();
-  var h = now.getHours().toString().padStart(2,'0');
-  var m = now.getMinutes().toString().padStart(2,'0');
-  var _cl = document.getElementById('clock'); if(_cl) _cl.textContent = h + ':' + m;
-}
-updateClock();
-setInterval(updateClock, 10000);
-
-// ── SCORE PICKER ──────────────────────────────────────────────────────────
-function changeScore(team, delta) {
-  if (team === 'col') { colScore = Math.max(0, colScore + delta); document.getElementById('col-score').textContent = colScore; }
-  else { porScore = Math.max(0, porScore + delta); document.getElementById('por-score').textContent = porScore; }
-  var diff = Math.abs(colScore - porScore);
-  document.getElementById('lbl-diff').textContent = 'Diferencia de goles (' + diff + ')';
-  document.getElementById('lbl-col').textContent = 'Goles Colombia (' + colScore + ')';
-  document.getElementById('lbl-por').textContent = 'Goles Portugal (' + porScore + ')';
-  document.getElementById('score-display').textContent = colScore + ' - ' + porScore;
-}
-
-// ── TABLA TABS ────────────────────────────────────────────────────────────
-function switchTab(btn) {
-  document.querySelectorAll('.tabla-tab').forEach(function(t){ t.classList.remove('active'); });
-  btn.classList.add('active');
-}
+// [goTo v2 + updateClock + changeScore + switchTab v2 eliminados]
 
 // ── ESPECIALES ────────────────────────────────────────────────────────────
 function getFlag(name) {
@@ -3764,8 +3871,9 @@ function renderGrupoFasePanel(k) {
   });
 }
 
-// ── EVENT LISTENERS ───────────────────────────────────────────────────────
-
+// ╔══════════════════════════════════════════════════════
+// ║ PLANTA BAJA — Navegación · goTo definitivo · tabMap
+// ╚══════════════════════════════════════════════════════
 // ── NAVIGATION ────────────────────────────────────────────────────────────
 var tabMap = {
   's-home':'tab-home','s-partidos':'tab-reglas','s-partido':'tab-home',
@@ -3827,6 +3935,7 @@ function goTo(screenId) {
 
   if (screenId === 's-especiales') initEspeciales();
   if (screenId === 's-reglas') initReglas();
+  if (screenId === 's-estadios') initLab();
   if (screenId === 's-home') { setTimeout(function(){ if(currentHomeTab==='grupos') initGruposFase(); }, 50); }
 }
 
@@ -3979,6 +4088,157 @@ document.addEventListener('DOMContentLoaded', function() {
     if (openDropId && !e.target.closest('.custom-select')) closeAllDrops();
   });
 });
+
+// ╔══════════════════════════════════════════════════════
+// ║ TORRE PARTIDOS — Generador PDF
+// ╚══════════════════════════════════════════════════════
+
+// ╔══════════════════════════════════════════════════════════════════════
+// ║ TAÍNO — Asistente AI de reglas y Mundial 2026
+// ║ Modelo: claude-haiku-4-5-20251001 (rápido y económico)
+// ║ Contexto: reglas de la polla + conocimiento general del Mundial
+// ║ Scope: solo reglas y Mundial — sin datos de pronósticos aún
+// ╚══════════════════════════════════════════════════════════════════════
+
+var tainoHistorial = []; // memoria de la conversación actual
+var tainoPensando  = false;
+
+var TAINO_SYSTEM = `Eres Taíno, la mascota oficial de La Polla Mundialista 2026.
+Eres un experto apasionado en dos temas únicamente:
+
+1. LAS REGLAS DE ESTA POLLA:
+- Ventana de apuesta: 100% antes del partido, 50% en primer tiempo, 0% en segundo tiempo y después
+- Ciclo 1 (Fase de Grupos, 72 partidos): puntos por resultado, marcador exacto, diferencia de goles
+- Ciclo 2 (Eliminatorias, 32 partidos): mismos microjuegos + factor multiplicador por fase
+- Microjuegos dentro de cada partido: resultado (G/E/P), marcador exacto, goles local, goles visita, diferencia
+- Especiales Ciclo 1: adivinar clasificados por grupo (orden exacto o cualquier orden)
+- Especiales Ciclo 2: campeón, subcampeón, tercero, cuarto
+- Premios: ganador Ciclo 1, ganador Ciclo 2, campeón total
+
+2. EL MUNDIAL FIFA 2026:
+- 48 selecciones, 12 grupos de 4, 104 partidos
+- 3 países anfitriones: Estados Unidos, México, Canadá
+- 16 sedes en total
+- Del 11 de junio al 19 de julio de 2026
+- Final en MetLife Stadium, Nueva Jersey
+- Nuevo formato: los 2 primeros de cada grupo + 8 mejores terceros pasan a 16avos
+- Grupos: A(México, Sudáfrica, Corea del Sur, UEFA D), B(Canadá, Qatar, Suiza, UEFA 1), C(Brasil, Marruecos, Haití, Escocia), D(EE.UU., Paraguay, Australia, UEFA C), E(Alemania, Curazao, Costa de Marfil, Ecuador), F(Países Bajos, Japón, UEFA B, Túnez), G(Bélgica, Egipto, Irán, Nueva Zelanda), H(España, Cabo Verde, Arabia Saudita, Uruguay), I(Francia, Senegal, Rep./Irak/Bol., Noruega), J(Argentina, Argelia, Austria, Jordania), K(Portugal, Rep.1, Uzbekistán, Colombia), L(México, Rep.2, Pol./Ucrania, Turquía)
+
+PERSONALIDAD:
+- Hablas en español colombiano, eres energético y apasionado por el fútbol
+- Usas emojis con moderación (1-2 por respuesta máximo)
+- Máximo 3 oraciones por respuesta — eres conciso y directo
+- Si te preguntan algo fuera de estos dos temas, redirige amablemente: "Eso está fuera de mi cancha, pero sobre reglas o el Mundial te cuento todo 🌿"
+- Nunca inventas datos — si no sabes algo específico, lo dices claramente`;
+
+function tainoPreguntar(texto) {
+  var input = document.getElementById('taino-input');
+  if (input) input.value = texto;
+  tainoEnviar();
+}
+
+function tainoEnviar() {
+  if (tainoPensando) return;
+  var input = document.getElementById('taino-input');
+  if (!input) return;
+  var pregunta = input.value.trim();
+  if (!pregunta) return;
+
+  input.value = '';
+  tainoPensando = true;
+
+  // Mostrar pregunta del usuario en la burbuja
+  tainoMostrarUsuario(pregunta);
+
+  // Mostrar estado pensando
+  tainoMostrarPensando();
+
+  // Agregar al historial
+  tainoHistorial.push({ role: 'user', content: pregunta });
+
+  // Llamar a la API
+  var TAINO_KEY = window.TAINO_API_KEY || '';
+  if (!TAINO_KEY) {
+    tainoMostrarRespuesta('Falta configurar el API key. Agrega window.TAINO_API_KEY = "sk-ant-..." antes del cierre del script 🌿');
+    tainoPensando = false;
+    return;
+  }
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': TAINO_KEY,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-allow-browser': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 300,
+      system: TAINO_SYSTEM,
+      messages: tainoHistorial.slice(-6) // últimas 3 preguntas + respuestas
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    var respuesta = (data.content && data.content[0] && data.content[0].text)
+      ? data.content[0].text
+      : '¡Ups! Algo falló. Intenta de nuevo 🌿';
+
+    // Agregar respuesta al historial
+    tainoHistorial.push({ role: 'assistant', content: respuesta });
+
+    // Mostrar respuesta
+    tainoMostrarRespuesta(respuesta);
+    tainoPensando = false;
+
+    // Animar avatar
+    var avatar = document.getElementById('taino-avatar');
+    if (avatar) {
+      avatar.style.transform = 'scale(1.15)';
+      setTimeout(function() { avatar.style.transform = 'scale(1)'; }, 300);
+    }
+  })
+  .catch(function(err) {
+    tainoMostrarRespuesta('¡Ups! No pude conectarme. Revisa tu conexión 🌿');
+    tainoPensando = false;
+  });
+}
+
+function tainoMostrarUsuario(texto) {
+  var bubble = document.getElementById('taino-bubble');
+  if (!bubble) return;
+  // Agregar burbuja del usuario encima
+  var userBubble = document.createElement('div');
+  userBubble.style.cssText = 'text-align:right;margin-bottom:10px;';
+  userBubble.innerHTML = '<span style="display:inline-block;background:#007aff;color:#fff;border-radius:16px 16px 4px 16px;padding:10px 14px;font-size:14px;max-width:85%;">' + tainoEscapar(texto) + '</span>';
+  bubble.parentNode.insertBefore(userBubble, bubble);
+}
+
+function tainoMostrarPensando() {
+  var bubble = document.getElementById('taino-bubble');
+  if (!bubble) return;
+  bubble.innerHTML = '<span style="color:#27ae60;font-style:italic;">Taíno está pensando</span> <span id="taino-dots">●</span>';
+  // Animación de puntos
+  var i = 0, dots = ['●', '●●', '●●●', '●●'];
+  window._tainoDotInterval = setInterval(function() {
+    var el = document.getElementById('taino-dots');
+    if (el) el.textContent = dots[i++ % dots.length];
+  }, 400);
+}
+
+function tainoMostrarRespuesta(texto) {
+  clearInterval(window._tainoDotInterval);
+  var bubble = document.getElementById('taino-bubble');
+  if (!bubble) return;
+  bubble.style.cssText = 'background:#f0faf4;border:1px solid #d5f0e0;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;color:#1a1a1a;line-height:1.5;transition:opacity .3s;';
+  bubble.textContent = texto;
+  // Scroll suave hacia Taíno
+  bubble.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function tainoEscapar(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 
 // ── GENERADOR DE EXTRACTO PDF ─────────────────────────────────────────────
 function generarExtractoPDF() {
@@ -4250,6 +4510,13 @@ function generarExtractoPDF() {
   var nombreArchivo = 'Extracto_' + cuentaTexto.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_') + '_' + new Date().toISOString().slice(0,10) + '.pdf';
   doc.save(nombreArchivo);
 }
+
+
+// ══════════════════════════════════════════════════════════════
+// TAÍNO API KEY — reemplaza con tu key real de Anthropic
+// Obtén tu key en: https://console.anthropic.com/
+// ══════════════════════════════════════════════════════════════
+
 
 </script>
 </body>
