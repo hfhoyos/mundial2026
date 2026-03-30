@@ -1449,6 +1449,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro
 // TAÍNO API KEY
 // ══════════════════════════════════════════════════════
 window.TAINO_API_KEY = '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';
+// PROXY: reemplaza con tu URL de Cloudflare Worker después del deploy
+window.TAINO_PROXY_URL = 'https://nameless-pine-80e6.hfhoyos.workers.dev';
 
 
 // ── BRACKET VARIABLES ────────────────────────────────────────────────────
@@ -4393,13 +4395,13 @@ function tainoEnviar() {
     return;
   }
 
-  fetch('https://api.anthropic.com/v1/messages', {
+  // PROXY URL — reemplaza con tu Cloudflare Worker URL después del deploy
+  var PROXY_URL = window.TAINO_PROXY_URL || 'https://taino-proxy.TU-USUARIO.workers.dev';
+
+  fetch(PROXY_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': key,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-allow-browser': 'true'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       model: 'claude-haiku-4-5-20251001',
